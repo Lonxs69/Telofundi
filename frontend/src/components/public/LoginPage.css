@@ -1,0 +1,755 @@
+/* LoginPage.css - TeloFundi Login Component Styles */
+
+/* Reset y Base */
+.login-container-telofundi * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Login Container */
+.login-container-telofundi {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 16px;
+}
+
+.login-container-telofundi.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Login Modal */
+.login-modal-telofundi {
+  position: relative;
+  background: #000000;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid #1a1a1a;
+  transform: scale(0.95) translateY(20px);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  backdrop-filter: blur(20px);
+}
+
+.login-container-telofundi.active .login-modal-telofundi {
+  transform: scale(1) translateY(0);
+}
+
+/* Close Button */
+.login-close-btn-telofundi {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+
+.login-close-btn-telofundi:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1) rotate(90deg);
+}
+
+.login-close-btn-telofundi svg {
+  width: 18px;
+  height: 18px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Form Side */
+.login-form-side-telofundi {
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #000000;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Form Content */
+.login-form-content-telofundi {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-origin: center center;
+}
+
+/* Header */
+.login-form-header-telofundi {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-form-title-telofundi {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #ffffff 0%, #fed7cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.login-form-subtitle-telofundi {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Google Button */
+.login-google-btn-telofundi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #1a1a1a;
+  border-radius: 12px;
+  background: #0a0a0a;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-google-btn-telofundi::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(210, 66, 26, 0.1) 0%, rgba(255, 107, 53, 0.1) 50%, rgba(255, 140, 66, 0.1) 100%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-google-btn-telofundi:hover {
+  border-color: #d2421a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.login-google-btn-telofundi:hover::before {
+  opacity: 1;
+}
+
+.login-google-btn-telofundi span {
+  position: relative;
+  z-index: 1;
+}
+
+.login-google-icon-telofundi {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Divider */
+.login-divider-telofundi {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 20px 0;
+  color: #a1a1aa;
+  font-size: 0.85rem;
+}
+
+.login-divider-line-telofundi {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #2a2a2e, transparent);
+}
+
+/* Form */
+.login-form-telofundi {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Input Group */
+.login-input-group-telofundi {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.login-input-telofundi {
+  width: 100%;
+  padding: 14px 40px 14px 16px;
+  border: 2px solid #2a2a2e;
+  border-radius: 12px;
+  background: #1e1e20;
+  color: #ffffff;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.login-input-telofundi:focus {
+  border-color: #d2421a;
+  background: #1a1a1c;
+  box-shadow: 0 0 0 4px rgba(210, 66, 26, 0.1);
+}
+
+.login-input-telofundi.error {
+  border-color: #dc2626;
+}
+
+.login-input-telofundi::placeholder {
+  color: #71717a;
+}
+
+/* Password Toggle */
+.login-password-toggle-telofundi {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #a1a1aa;
+  cursor: pointer;
+  padding: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-password-toggle-telofundi:hover {
+  color: #d2421a;
+  background: rgba(210, 66, 26, 0.1);
+}
+
+.login-password-toggle-telofundi svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Error Text */
+.login-error-text {
+  color: #fca5a5;
+  font-size: 0.75rem;
+  margin-top: 6px;
+  display: block;
+  animation: slideInError 0.3s ease-out;
+}
+
+/* Submit Button */
+.login-submit-btn-telofundi {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d2421a 0%, #ff6b35 50%, #ff8c42 100%);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 20px rgba(210, 66, 26, 0.3);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-top: 8px;
+}
+
+.login-submit-btn-telofundi::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-submit-btn-telofundi:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(210, 66, 26, 0.4);
+}
+
+.login-submit-btn-telofundi:hover::before {
+  opacity: 1;
+}
+
+.login-submit-btn-telofundi:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading Spinner */
+.login-loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.login-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+}
+
+/* Form Links */
+.login-form-links-telofundi {
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.login-link-primary-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+
+.login-link-telofundi {
+  color: #a1a1aa;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+}
+
+.login-link-telofundi::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #d2421a;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-link-telofundi:hover {
+  color: #d2421a;
+}
+
+.login-link-telofundi:hover::after {
+  width: 100%;
+}
+
+.login-link-telofundi.primary {
+  color: #d2421a;
+  font-weight: 600;
+}
+
+.login-link-telofundi.secondary {
+  color: #a1a1aa;
+}
+
+/* Logo */
+.login-logo-container {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.login-logo-telofundi {
+  width: 280px;
+  height: 220px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+/* Brand Content */
+.login-brand-content-telofundi {
+  text-align: center;
+  z-index: 2;
+  color: white;
+  max-width: 320px;
+  padding: 0 20px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-origin: center center;
+}
+
+.login-brand-subtitle-telofundi {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Success Message */
+.login-success-message-telofundi {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.login-success-icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.login-success-icon-telofundi {
+  width: 36px;
+  height: 36px;
+  color: #22c55e;
+}
+
+.login-success-title-telofundi {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.login-success-text-telofundi {
+  color: #a1a1aa;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* Error Message */
+.login-error-message-telofundi {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #fca5a5;
+  font-size: 0.85rem;
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .login-modal-telofundi {
+    width: 90vw;
+    height: 85vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  .login-modal-telofundi {
+    width: 95vw;
+    height: 80vh;
+    max-height: 600px;
+  }
+
+  .login-form-content-telofundi {
+    max-width: 350px;
+  }
+
+  .login-logo-telofundi {
+    width: 180px;
+    height: 140px;
+  }
+
+  .login-brand-subtitle-telofundi {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-modal-telofundi {
+    width: 95vw;
+    height: 85vh;
+    max-height: 650px;
+    border-radius: 16px;
+  }
+
+  .login-form-side-telofundi {
+    padding: 16px;
+  }
+
+  .login-form-content-telofundi {
+    max-width: 320px;
+  }
+
+  .login-form-title-telofundi {
+    font-size: 1.5rem;
+  }
+
+  .login-input-telofundi {
+    padding: 12px 36px 12px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-modal-telofundi {
+    width: 98vw;
+    height: 90vh;
+    max-height: 700px;
+    border-radius: 12px;
+  }
+
+  .login-form-side-telofundi {
+    padding: 12px;
+  }
+
+  .login-form-content-telofundi {
+    max-width: 280px;
+  }
+
+  .login-form-title-telofundi {
+    font-size: 1.3rem;
+  }
+
+  .login-input-telofundi {
+    padding: 10px 32px 10px 10px;
+    font-size: 0.85rem;
+  }
+
+  .login-submit-btn-telofundi {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .login-google-btn-telofundi {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideInError {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+/* Performance Optimizations */
+.login-modal-telofundi,
+.login-form-side-telofundi,
+.login-form-content-telofundi,
+.login-brand-content-telofundi {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus States */
+.login-submit-btn-telofundi:focus,
+.login-google-btn-telofundi:focus,
+.login-input-telofundi:focus {
+  outline: 2px solid #d2421a;
+  outline-offset: 2px;
+}
+
+.login-close-btn-telofundi:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Estados adicionales para mejor UX */
+.login-input-telofundi:focus + .login-password-toggle-telofundi {
+  color: #d2421a;
+}
+
+.login-submit-btn-telofundi:active {
+  transform: translateY(0);
+  box-shadow: 0 0 15px rgba(210, 66, 26, 0.25);
+}
+
+.login-google-btn-telofundi:active {
+  transform: translateY(0);
+}
+
+/* Scrollbar personalizado */
+.login-form-side-telofundi::-webkit-scrollbar {
+  width: 6px;
+}
+
+.login-form-side-telofundi::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.login-form-side-telofundi::-webkit-scrollbar-thumb {
+  background: rgba(210, 66, 26, 0.3);
+  border-radius: 3px;
+}
+
+.login-form-side-telofundi::-webkit-scrollbar-thumb:hover {
+  background: rgba(210, 66, 26, 0.5);
+}
+
+/* Estados de loading mejorados */
+.login-submit-btn-telofundi:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 0 10px rgba(210, 66, 26, 0.2);
+}
+
+/* Mejoras para pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .login-modal-telofundi {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+  
+  .login-form-side-telofundi {
+    padding: 16px 12px;
+  }
+  
+  .login-form-content-telofundi {
+    max-width: 100%;
+  }
+  
+  .login-input-telofundi {
+    font-size: 16px;
+  }
+}
+
+/* Estados hover mejorados */
+.login-link-telofundi:hover {
+  color: #d2421a;
+  transform: translateY(-1px);
+}
+
+.login-password-toggle-telofundi:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Animación para el icono de éxito */
+.login-success-icon-telofundi {
+  animation: checkmark 0.6s ease-out;
+}
+
+/* Mejoras para contraste y legibilidad */
+.login-input-telofundi:focus::placeholder {
+  color: #8a8a8a;
+}
+
+.login-form-subtitle-telofundi {
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* Optimización final de rendimiento */
+.login-container-telofundi * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .login-submit-btn-telofundi,
+  .login-google-btn-telofundi,
+  .login-password-toggle-telofundi,
+  .login-close-btn-telofundi,
+  .login-link-telofundi {
+    min-height: 44px;
+  }
+  
+  .login-input-telofundi {
+    min-height: 44px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .login-submit-btn-telofundi:hover,
+  .login-google-btn-telofundi:hover,
+  .login-close-btn-telofundi:hover,
+  .login-link-telofundi:hover {
+    transform: none;
+    box-shadow: inherit;
+    background: inherit;
+    border-color: inherit;
+    color: inherit;
+  }
+}

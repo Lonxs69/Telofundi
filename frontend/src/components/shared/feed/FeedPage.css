@@ -1,0 +1,662 @@
+/* FeedPage.css - Versión con Cards Delgadas Estilo Card */
+
+:root {
+  --primary-orange: #ff6b35;
+  --primary-orange-dark: #e85a2e;
+  --primary-orange-light: #ff8a5b;
+  --admin-primary: #dc2626;
+  --admin-success: #059669;
+  --dark-bg: rgba(15, 15, 15, 0.98);
+  --dark-elevated: rgba(25, 25, 25, 0.9);
+  --dark-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Layout principal */
+.feed-page {
+  background: linear-gradient(135deg, #000000 0%, #1a0a00 25%, #2d1700 50%, var(--primary-orange) 85%, var(--primary-orange-light) 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.feed-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.7) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== CARDS DEL FEED - DELGADAS ESTILO CARD ===== */
+.feed-post-card {
+  background: var(--dark-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--dark-border);
+  border-radius: 16px; /* Más redondeadas para estilo card */
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 320px; /* MÁS DELGADA - Reducido de 380px a 320px */
+  position: relative;
+  margin: 0.8rem auto; /* Menos margen para cards más compactas */
+  
+  /* Estilo card elevado */
+  transform: translateY(0);
+}
+
+.feed-post-card:hover {
+  transform: translateY(-6px); /* Elevación más sutil */
+  border-color: rgba(255, 107, 53, 0.4);
+  box-shadow: 
+    0 12px 28px rgba(0, 0, 0, 0.25),
+    0 6px 12px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 107, 53, 0.1);
+}
+
+/* Header del post - MÁS COMPACTO */
+.feed-post-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.8rem 1rem; /* Padding reducido */
+}
+
+.feed-profile-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem; /* Gap reducido */
+  flex: 1;
+}
+
+.feed-profile-image {
+  width: 2rem; /* Más pequeña */
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-orange);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.feed-profile-image:hover {
+  transform: scale(1.05);
+}
+
+.feed-profile-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.feed-profile-name {
+  font-size: 0.85rem; /* Texto más pequeño */
+  font-weight: 700;
+  color: white;
+  margin: 0 0 0.15rem 0;
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.feed-profile-name:hover {
+  color: var(--primary-orange);
+}
+
+.feed-location {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: white;
+  font-size: 0.65rem; /* Más pequeño */
+  font-weight: 500;
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.9);
+}
+
+.feed-age-badge {
+  color: white;
+  font-weight: 600;
+  font-size: 0.7rem; /* Más pequeño */
+  background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-dark) 100%);
+  padding: 0.2rem 0.4rem; /* Padding reducido */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  white-space: nowrap;
+}
+
+/* Imagen del post - MÁS COMPACTA Y DELGADA */
+.feed-image-container {
+  position: relative;
+  width: 100%;
+  height: 420px; /* MUCHO MÁS DELGADA - Reducido de 560px a 420px */
+  overflow: hidden;
+  background: #000;
+  border-radius: 0; /* Sin border-radius para que se ajuste al card */
+}
+
+.feed-post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Navegación de imágenes - MÁS PEQUEÑA */
+.feed-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  color: white;
+  border: none;
+  width: 2.5rem; /* Más pequeño */
+  height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+
+.feed-post-card:hover .feed-nav-button {
+  opacity: 1;
+}
+
+.feed-nav-button:hover {
+  background: rgba(255, 107, 53, 0.9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.feed-nav-prev {
+  left: 0.8rem;
+}
+
+.feed-nav-next {
+  right: 0.8rem;
+}
+
+/* Indicadores de imagen - MÁS PEQUEÑOS */
+.feed-image-indicators {
+  position: absolute;
+  bottom: 4rem; /* Ajustado para la nueva altura */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.4rem;
+  z-index: 10;
+}
+
+.feed-dot {
+  width: 6px; /* Más pequeño */
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.feed-dot.active {
+  background: var(--primary-orange);
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.6);
+  transform: scale(1.3);
+}
+
+/* Descripción overlay - MÁS COMPACTA */
+.feed-description-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 60%, transparent 100%);
+  padding: 1.5rem 1rem 1rem; /* Padding reducido */
+  backdrop-filter: blur(10px);
+}
+
+.feed-description {
+  color: white;
+  font-size: 0.8rem; /* Más pequeño */
+  font-weight: 400;
+  line-height: 1.4;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  margin: 0;
+  /* Limitar líneas para mantener card delgada */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Acciones del post - MÁS COMPACTAS */
+.feed-actions {
+  padding: 1rem; /* Padding reducido */
+  background: linear-gradient(145deg, rgba(18, 18, 18, 0.9) 0%, rgba(25, 25, 25, 0.9) 100%);
+}
+
+.feed-action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; /* Gap reducido */
+}
+
+.feed-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem; /* Más pequeño */
+  height: 2.4rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  position: relative;
+}
+
+/* Botón principal (like/fire) - MÁS PEQUEÑO PERO DESTACADO */
+.feed-fire-btn {
+  width: 3.2rem !important; /* Reducido de 4rem a 3.2rem */
+  height: 3.2rem !important;
+  background: rgba(60, 60, 60, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feed-fire-btn.feed-fire-active {
+  background: linear-gradient(145deg, #dc2626 0%, #991b1b 100%);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4); /* Sombra reducida */
+}
+
+.feed-chat-btn {
+  background: linear-gradient(145deg, var(--primary-orange) 0%, var(--primary-orange-light) 100%);
+  color: white;
+  border: 1px solid rgba(255, 107, 53, 0.3);
+}
+
+.feed-whatsapp-btn {
+  background: linear-gradient(145deg, #25d366 0%, #128c7e 100%);
+  color: white;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.feed-action-btn:hover {
+  transform: translateY(-2px) scale(1.05); /* Elevación reducida */
+}
+
+/* Botones de admin */
+.admin-ban-btn {
+  background: linear-gradient(145deg, var(--admin-primary) 0%, #991b1b 100%);
+  color: white;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.admin-unban-btn {
+  background: linear-gradient(145deg, var(--admin-success) 0%, #047857 100%);
+  color: white;
+  border: 1px solid rgba(5, 150, 105, 0.3);
+}
+
+/* Estadísticas del post - MÁS COMPACTAS */
+.feed-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem; /* Gap reducido */
+  margin-top: 0.7rem; /* Margen reducido */
+  font-size: 0.75rem; /* Más pequeño */
+  color: #9ca3af;
+}
+
+/* Botón de compartir - MÁS COMPACTO */
+.feed-share-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.7rem; /* Margen reducido */
+}
+
+.feed-share-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem; /* Gap reducido */
+  padding: 0.4rem 0.8rem; /* Padding reducido */
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: #9ca3af;
+  font-size: 0.75rem; /* Más pequeño */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.feed-share-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e5e7eb;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Badges de estado - MÁS PEQUEÑOS */
+.feed-verified-badge {
+  position: absolute;
+  bottom: -0.1rem;
+  right: -0.1rem;
+  width: 1rem; /* Más pequeño */
+  height: 1rem;
+  color: #3b82f6;
+  background: white;
+  border-radius: 50%;
+  padding: 0.1rem;
+  border: 2px solid #3b82f6;
+  filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.8));
+}
+
+.admin-banned-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--admin-primary);
+  color: white;
+  padding: 3px 6px; /* Más pequeño */
+  border-radius: 10px;
+  font-size: 0.7rem; /* Más pequeño */
+  font-weight: 600;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* FAB de filtros */
+.feed-filters-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 56px; /* Más pequeño */
+  height: 56px;
+  background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-orange-dark) 100%);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-Content:'center';
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4); /* Sombra reducida */
+}
+
+.feed-filters-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
+}
+
+/* FAB de refresh */
+.feed-refresh-fab {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  width: 56px; /* Más pequeño */
+  height: 56px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); /* Sombra reducida */
+}
+
+.feed-refresh-fab:hover {
+  transform: scale(1.1);
+}
+
+.feed-refresh-fab:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba(60, 60, 60, 0.8);
+}
+
+/* Hero Section */
+.feed-hero {
+  position: relative;
+  z-index: 1;
+  padding: 1.2rem 0; /* Padding reducido */
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+
+.feed-hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.feed-hero-card {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.98) 0%, rgba(30, 30, 30, 0.95) 100%);
+  backdrop-filter: blur(27px);
+  border-radius: 1.4rem; /* Más redondeado para estilo card */
+  padding: 1.4rem; /* Padding reducido */
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* Sombra reducida */
+}
+
+.feed-hero-title {
+  font-size: clamp(1.3rem, 3vw, 2rem); /* Más pequeño */
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.5rem; /* Margen reducido */
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.feed-hero-subtitle {
+  font-size: 0.9rem; /* Más pequeño */
+  color: #e5e7eb;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Navigation */
+.feed-navigation {
+  position: relative;
+  z-index: 1;
+  padding: 0.6rem 0; /* Padding reducido */
+  display: flex;
+  justify-content: center;
+}
+
+.feed-nav-tabs {
+  display: flex;
+  gap: 0.3rem; /* Gap reducido */
+  background: rgba(20, 20, 20, 0.8);
+  padding: 0.3rem; /* Padding reducido */
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feed-nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem; /* Gap reducido */
+  padding: 0.5rem 1rem; /* Padding reducido */
+  background: transparent;
+  border: none;
+  border-radius: 0.6rem;
+  color: #9ca3af;
+  font-size: 0.75rem; /* Más pequeño */
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.feed-nav-tab.active {
+  background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-dark));
+  color: white;
+  box-shadow: 0 3px 8px rgba(255, 107, 53, 0.3); /* Sombra reducida */
+}
+
+.feed-nav-tab:hover {
+  scale: 1.05;
+}
+
+/* Content */
+.feed-content {
+  position: relative;
+  z-index: 1;
+  padding: 0.6rem; /* Padding reducido */
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.feed-main-content {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.98) 0%, rgba(30, 30, 30, 0.95) 100%);
+  backdrop-filter: blur(16px);
+  border-radius: 0.8rem;
+  padding: 1rem; /* Padding reducido */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* Sombra reducida */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.feed-posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Gap reducido para cards más juntas */
+}
+
+/* Loading y estados */
+.feed-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px; /* Altura reducida */
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.feed-loading .spinner {
+  width: 36px; /* Más pequeño */
+  height: 36px;
+  border: 3px solid rgba(255, 107, 53, 0.2); /* Borde más delgado */
+  border-top: 3px solid var(--primary-orange);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.feed-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px; /* Altura reducida */
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem; /* Padding reducido */
+  text-align: center;
+}
+
+/* ===== RESPONSIVE PARA CARDS DELGADAS ===== */
+@media (max-width: 768px) {
+  .feed-post-card {
+    max-width: 300px; /* Más delgada en mobile */
+  }
+  
+  .feed-image-container {
+    height: 380px; /* Más compacta en mobile */
+  }
+  
+  .feed-nav-tabs {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  
+  .feed-nav-tab {
+    justify-content: center;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .feed-action-btn {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+  }
+  
+  .feed-fire-btn {
+    width: 2.8rem !important;
+    height: 2.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .feed-post-card {
+    max-width: 280px; /* Aún más delgada en móviles pequeños */
+    margin: 0.6rem auto;
+  }
+  
+  .feed-image-container {
+    height: 340px; /* Muy compacta */
+  }
+  
+  .feed-action-btn {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+  
+  .feed-fire-btn {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+  
+  .feed-filters-fab,
+  .feed-refresh-fab {
+    width: 48px;
+    height: 48px;
+  }
+
+  .feed-post-header {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .feed-actions {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .feed-post-card {
+    max-width: 310px; /* Tamaño intermedio para tablets */
+  }
+  
+  .feed-image-container {
+    height: 400px;
+  }
+}

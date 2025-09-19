@@ -1,0 +1,837 @@
+/* AdminDashboard.css - Copiado exactamente de AgencyDashboard.css con colores admin */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Colores principales Admin (rojo/negro) */
+  --primary-orange: #dc2626;
+  --primary-orange-dark: #991b1b;
+  --primary-orange-light: #ef4444;
+  
+  /* Grises modernos */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  
+  /* Colores oscuros mejorados */
+  --dark-bg: #0a0a0a;
+  --dark-surface: #151515;
+  --dark-elevated: #1f1f1f;
+  --dark-border: #2a2a2a;
+  --dark-card: #1a1a1a;
+  
+  /* Colores de estado */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+  
+  /* Sombras reducidas */
+  --shadow-sm: 0 0.67px 1.34px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2.68px 4.02px -0.67px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 6.7px 10.05px -2.01px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 13.4px 16.75px -3.35px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 13.4px rgba(220, 38, 38, 0.3);
+  
+  /* Espaciado reducido al 67% */
+  --space-1: 0.1675rem;
+  --space-2: 0.335rem;
+  --space-3: 0.5025rem;
+  --space-4: 0.67rem;
+  --space-5: 0.8375rem;
+  --space-6: 1.005rem;
+  --space-8: 1.34rem;
+  --space-10: 1.675rem;
+  --space-12: 2.01rem;
+  --space-16: 2.68rem;
+  
+  /* Border radius reducido */
+  --radius-sm: 0.25125rem;
+  --radius-md: 0.335rem;
+  --radius-lg: 0.5025rem;
+  --radius-xl: 0.67rem;
+  --radius-2xl: 1.005rem;
+  --radius-full: 9999px;
+  
+  /* Transiciones */
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Base mejorado */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--dark-bg);
+  color: white;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  font-size: 0.871rem;
+}
+
+/* IMPORTANT: Header visible en dashboard */
+body.in-dashboard .header {
+  transform: translateY(0) !important;
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 2.68px 21.44px rgba(0, 0, 0, 0.3) !important;
+  position: fixed !important;
+  top: 0 !important;
+  z-index: 999 !important;
+  height: 53.6px !important;
+}
+
+/* Layout Principal - Reducido */
+.client-dashboard {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background: var(--dark-bg);
+  overflow: hidden;
+  position: relative;
+  padding-top: 53.6px;
+}
+
+/* Sidebar - Reducido */
+.dashboard-sidebar {
+  width: 187.6px;
+  height: calc(100vh - 53.6px);
+  background: linear-gradient(180deg, var(--dark-surface) 0%, rgba(21, 21, 21, 0.98) 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 53.6px;
+  z-index: 200;
+  transition: var(--transition-spring);
+  backdrop-filter: blur(20px);
+  box-shadow: 1.34px 0 13.4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-sidebar.collapsed {
+  width: 53.6px;
+}
+
+/* User Card - Reducido SIN BARRA DE PROGRESO */
+.sidebar-user-card {
+  margin: var(--space-4) var(--space-4) var(--space-6);
+  padding: var(--space-4);
+  background: linear-gradient(135deg, rgba(31, 31, 31, 0.8), rgba(26, 26, 26, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(10px);
+}
+
+.user-card-main {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.user-avatar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.user-avatar-compact {
+  width: 26.8px;
+  height: 26.8px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--primary-orange);
+  object-fit: cover;
+}
+
+.premium-indicator {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  background: var(--primary-orange);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: 2px solid var(--dark-surface);
+}
+
+.online-status {
+  position: absolute;
+  bottom: 0;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--dark-surface);
+}
+
+.user-info-compact h4 {
+  font-size: 0.628125rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 var(--space-1) 0;
+}
+
+.user-level {
+  font-size: 0.5025rem;
+  color: var(--gray-400);
+  font-weight: 500;
+}
+
+/* ELIMINAR COMPLETAMENTE LAS BARRAS DE PROGRESO */
+.user-progress,
+.progress-bar-mini,
+.progress-fill-mini,
+.progress-text-mini {
+  display: none !important;
+}
+
+/* Sidebar Navigation - Reducido */
+.sidebar-nav {
+  flex: 1;
+  padding: var(--space-4);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-section {
+  margin-bottom: var(--space-6);
+}
+
+.nav-section-title {
+  font-size: 0.5025rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-3);
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-3);
+  color: var(--gray-400);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: var(--transition-spring);
+  position: relative;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.628125rem;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.01px;
+  height: 0;
+  background: var(--primary-orange);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  transition: var(--transition-spring);
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  transform: translateX(1.34px);
+}
+
+.nav-item:hover::before {
+  height: 13.4px;
+}
+
+.nav-item.active {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), rgba(220, 38, 38, 0.1));
+  color: var(--primary-orange);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  box-shadow: 0 2.68px 8.04px rgba(220, 38, 38, 0.1);
+}
+
+.nav-item.active::before {
+  height: 16.08px;
+  width: 2.68px;
+}
+
+.nav-item-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-icon {
+  width: 13.4px;
+  height: 13.4px;
+  transition: var(--transition);
+}
+
+.nav-item:hover .nav-icon {
+  transform: scale(1.1);
+}
+
+.nav-badge {
+  position: absolute;
+  top: -4.02px;
+  right: -4.02px;
+  background: var(--error);
+  color: white;
+  font-size: 0.5025rem;
+  font-weight: 700;
+  padding: 0.08375rem 0.25125rem;
+  border-radius: var(--radius-full);
+  min-width: 12.06px;
+  text-align: center;
+  box-shadow: 0 1.34px 5.36px rgba(239, 68, 68, 0.3);
+}
+
+.nav-label {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Sidebar Footer - Reducido */
+.sidebar-footer {
+  padding: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(31, 31, 31, 0.3);
+}
+
+.upgrade-card-compact {
+  background: linear-gradient(135deg, var(--primary-orange), var(--primary-orange-dark));
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-4);
+  cursor: pointer;
+  transition: var(--transition-spring);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.upgrade-card-compact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.upgrade-card-compact:hover::before {
+  opacity: 1;
+}
+
+.upgrade-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.upgrade-icon {
+  color: rgba(255, 255, 255, 0.9);
+  width: 13.4px;
+  height: 13.4px;
+}
+
+.upgrade-text h4 {
+  font-size: 0.58625rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 var(--space-1) 0;
+}
+
+.upgrade-text p {
+  font-size: 0.5025rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.upgrade-btn-compact {
+  width: 21.44px;
+  height: 21.44px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: var(--radius-full);
+  color: white;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upgrade-btn-compact:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Logout Button - Reducido */
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-3);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  color: var(--gray-400);
+  cursor: pointer;
+  transition: var(--transition-spring);
+  font-size: 0.628125rem;
+  font-weight: 500;
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: var(--error);
+  color: var(--error);
+  transform: translateY(-0.67px);
+}
+
+.logout-btn.collapsed {
+  justify-content: center;
+  padding: var(--space-3);
+}
+
+/* Contenido Principal - Reducido */
+.dashboard-main {
+  background: var(--dark-bg);
+  overflow: hidden;
+  z-index: 1;
+  box-sizing: border-box;
+  margin-top: -53.6px;
+  padding-top: 53.6px;
+}
+
+.page-container-full {
+  background: var(--dark-bg);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sidebar Collapse Button - CORREGIDO */
+.sidebar-collapse-btn {
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  color: var(--gray-400);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 300;
+  font-size: 10px;
+}
+
+.sidebar-collapse-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--primary-orange);
+  border-color: rgba(220, 38, 38, 0.3);
+  transform: scale(1.05);
+}
+
+.sidebar-collapse-btn:active {
+  transform: scale(0.95);
+}
+
+.sidebar-collapse-btn svg {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+/* Overlay del sidebar */
+.sidebar-overlay {
+  position: fixed;
+  top: 53.6px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 53.6px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 150;
+}
+
+/* Responsive Design - Reducido */
+@media (max-width: 1200px) {
+  .dashboard-sidebar.collapsed {
+    width: 187.6px;
+  }
+  
+  .sidebar-collapse-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    top: 53.6px;
+    height: calc(100vh - 53.6px);
+  }
+  
+  .dashboard-sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .client-dashboard {
+    padding-top: 67px;
+  }
+  
+  .dashboard-sidebar {
+    top: 67px;
+    height: calc(100vh - 67px);
+  }
+  
+  .sidebar-nav {
+    padding: var(--space-3);
+  }
+  
+  .nav-section {
+    margin-bottom: var(--space-4);
+  }
+  
+  .sidebar-overlay {
+    top: 67px;
+    height: calc(100vh - 67px);
+  }
+  
+  body.in-dashboard .header {
+    height: 67px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .client-dashboard {
+    padding-top: 67px;
+  }
+  
+  .dashboard-sidebar {
+    top: 67px;
+    height: calc(100vh - 67px);
+  }
+  
+  .sidebar-user-card {
+    margin: var(--space-3);
+    padding: var(--space-3);
+  }
+}
+
+/* Enhanced Animations */
+.nav-item,
+.upgrade-card-compact,
+.logout-btn {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(13.4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus States para Accesibilidad */
+.nav-item:focus,
+.upgrade-btn-compact:focus,
+.logout-btn:focus,
+.sidebar-collapse-btn:focus {
+  outline: 2px solid var(--primary-orange);
+  outline-offset: 1.34px;
+}
+
+/* Scrollbar personalizado - Reducido */
+.sidebar-nav::-webkit-scrollbar {
+  width: 2.68px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: var(--gray-600);
+  border-radius: var(--radius-full);
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-orange);
+}
+
+/* Dashboard Components Global Fix - Espaciado ajustado */
+
+/* Clase base para todos los componentes del dashboard */
+.dashboard-page {
+  min-height: 100vh;
+  background: var(--dark-bg);
+  padding-top: 90px;
+  box-sizing: border-box;
+}
+
+/* Para pantallas de escritorio */
+@media (min-width: 1024px) {
+  .dashboard-page {
+    padding-top: 90px;
+  }
+}
+
+/* Para tablets */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .dashboard-page {
+    padding-top: 95px;
+  }
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding-top: 105px;
+  }
+}
+
+/* Para móviles pequeños */
+@media (max-width: 480px) {
+  .dashboard-page {
+    padding-top: 115px;
+  }
+}
+
+/* Hero sections dentro de componentes del dashboard */
+.dashboard-page .hero-section,
+.dashboard-page .page-hero,
+.dashboard-page .component-hero {
+  margin-top: 15px;
+}
+
+/* En móvil, ajustar proporcionalmente */
+@media (max-width: 768px) {
+  .dashboard-page .hero-section,
+  .dashboard-page .page-hero,
+  .dashboard-page .component-hero {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-page .hero-section,
+  .dashboard-page .page-hero,
+  .dashboard-page .component-hero {
+    margin-top: 8px;
+  }
+}
+
+/* Aplicar a contenedores principales de cada componente de admin */
+.admin-feed-page,
+.admin-chat-page,
+.admin-moderation-page,
+.admin-analytics-page,
+.admin-profile-page {
+  min-height: 100vh;
+  background: var(--dark-bg);
+  padding-top: 90px;
+  box-sizing: border-box;
+}
+
+/* Tablets */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .admin-feed-page,
+  .admin-chat-page,
+  .admin-moderation-page,
+  .admin-analytics-page,
+  .admin-profile-page {
+    padding-top: 95px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .admin-feed-page,
+  .admin-chat-page,
+  .admin-moderation-page,
+  .admin-analytics-page,
+  .admin-profile-page {
+    padding-top: 105px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .admin-feed-page,
+  .admin-chat-page,
+  .admin-moderation-page,
+  .admin-analytics-page,
+  .admin-profile-page {
+    padding-top: 115px;
+  }
+}
+
+/* Fix para hero sections dentro de estos componentes */
+.admin-feed-page .hero-section,
+.admin-chat-page .hero-section,
+.admin-moderation-page .hero-section,
+.admin-analytics-page .hero-section,
+.admin-profile-page .hero-section,
+.admin-feed-page .page-hero,
+.admin-chat-page .page-hero,
+.admin-moderation-page .page-hero,
+.admin-analytics-page .page-hero,
+.admin-profile-page .page-hero,
+.admin-feed-page .feed-hero,
+.admin-chat-page .chat-hero,
+.admin-moderation-page .moderation-hero,
+.admin-analytics-page .analytics-hero,
+.admin-profile-page .profile-hero {
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .admin-feed-page .hero-section,
+  .admin-chat-page .hero-section,
+  .admin-moderation-page .hero-section,
+  .admin-analytics-page .hero-section,
+  .admin-profile-page .hero-section,
+  .admin-feed-page .page-hero,
+  .admin-chat-page .page-hero,
+  .admin-moderation-page .page-hero,
+  .admin-analytics-page .page-hero,
+  .admin-profile-page .page-hero,
+  .admin-feed-page .feed-hero,
+  .admin-chat-page .chat-hero,
+  .admin-moderation-page .moderation-hero,
+  .admin-analytics-page .analytics-hero,
+  .admin-profile-page .profile-hero {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-feed-page .hero-section,
+  .admin-chat-page .hero-section,
+  .admin-moderation-page .hero-section,
+  .admin-analytics-page .hero-section,
+  .admin-profile-page .hero-section,
+  .admin-feed-page .page-hero,
+  .admin-chat-page .page-hero,
+  .admin-moderation-page .page-hero,
+  .admin-analytics-page .page-hero,
+  .admin-profile-page .page-hero,
+  .admin-feed-page .feed-hero,
+  .admin-chat-page .chat-hero,
+  .admin-moderation-page .moderation-hero,
+  .admin-analytics-page .analytics-hero,
+  .admin-profile-page .profile-hero {
+    margin-top: 8px;
+  }
+}
+
+/* Contenedores de contenido principal */
+.admin-feed-page .feed-container,
+.admin-chat-page .chat-container,
+.admin-moderation-page .moderation-container,
+.admin-analytics-page .analytics-container,
+.admin-profile-page .profile-container {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .admin-feed-page .feed-container,
+  .admin-chat-page .chat-container,
+  .admin-moderation-page .moderation-container,
+  .admin-analytics-page .analytics-container,
+  .admin-profile-page .profile-container {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-feed-page .feed-container,
+  .admin-chat-page .chat-container,
+  .admin-moderation-page .moderation-container,
+  .admin-analytics-page .analytics-container,
+  .admin-profile-page .profile-container {
+    margin-top: 12px;
+  }
+}
+
+/* Headers y títulos principales */
+.dashboard-page h1,
+.dashboard-page .main-title,
+.dashboard-page .page-title {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-page h1,
+  .dashboard-page .main-title,
+  .dashboard-page .page-title {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-page h1,
+  .dashboard-page .main-title,
+  .dashboard-page .page-title {
+    margin-top: 12px;
+  }
+}
+@import './ClientModule-Responsive.css';

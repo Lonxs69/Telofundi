@@ -1,0 +1,353 @@
+/* AdminAnalytics.css - Estilos específicos para el componente de Analytics */
+
+.admin-analytics-page {
+  min-height: 100vh;
+  background: var(--dark-bg);
+  padding-top: 90px;
+  box-sizing: border-box;
+}
+
+/* Hero Section */
+.analytics-hero {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.analytics-hero-content {
+  width: 100%;
+}
+
+.analytics-header-card {
+  background: linear-gradient(135deg, rgba(15, 15, 15, 0.98) 0%, rgba(25, 25, 25, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.header-card-main {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.header-card-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.analytics-icon-large {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.header-card-details {
+  flex: 1;
+}
+
+.header-card-details h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg, #fff, #dc2626);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-card-subtitle {
+  font-size: 1.125rem;
+  color: #9ca3af;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Navigation */
+.analytics-navigation {
+  padding: 0 2rem;
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+}
+
+.time-range-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.time-filter-btn {
+  padding: 12px 20px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.time-filter-btn.active {
+  background: rgba(220, 38, 38, 0.2);
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+.time-filter-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Content */
+.analytics-content {
+  padding: 0 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.analytics-metric-card {
+  background: linear-gradient(135deg, rgba(15, 15, 15, 0.98) 0%, rgba(25, 25, 25, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.metric-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.metric-content {
+  flex: 1;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.metric-title {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0.25rem 0;
+}
+
+.metric-growth {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.metric-growth.positive {
+  color: #10b981;
+}
+
+.metric-growth.negative {
+  color: #ef4444;
+}
+
+/* Chart */
+.chart-container {
+  background: linear-gradient(135deg, rgba(15, 15, 15, 0.98) 0%, rgba(25, 25, 25, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.chart-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  height: 200px;
+  padding: 20px 0;
+}
+
+.chart-bar-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart-bar {
+  width: 100%;
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 8px;
+}
+
+.chart-label {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Detailed Stats */
+.detailed-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.stats-card {
+  background: linear-gradient(135deg, rgba(15, 15, 15, 0.98) 0%, rgba(25, 25, 25, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.stats-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stats-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.stat-value {
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.stat-value.positive {
+  color: #10b981;
+}
+
+.stat-value.warning {
+  color: #f59e0b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-analytics-page {
+    padding-top: 105px;
+  }
+  
+  .analytics-hero,
+  .analytics-navigation,
+  .analytics-content {
+    padding: 0 1rem;
+  }
+  
+  .header-card-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .header-card-details h1 {
+    font-size: 2rem;
+  }
+  
+  .header-card-subtitle {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .detailed-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .chart-bars {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-analytics-page {
+    padding-top: 115px;
+  }
+  
+  .analytics-header-card {
+    padding: 1.5rem;
+  }
+  
+  .header-card-details h1 {
+    font-size: 1.75rem;
+  }
+  
+  .time-range-filters {
+    justify-content: center;
+  }
+  
+  .time-filter-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
